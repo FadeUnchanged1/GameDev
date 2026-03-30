@@ -9,482 +9,111 @@
 </head>
 <body>
   <main class="page">
-    <div class="shell">
-      <aside class="sidebar reveal">
-        <div class="brand">
-          <div class="brand-mark">S</div>
-          <div class="brand-name">
-            <strong>Solenne</strong>
-            <span>Development log</span>
+    <section class="hero reveal" id="top">
+      <p class="eyebrow">The Solenne Trials</p>
+      <h1>Development Log</h1>
+      <p class="subtitle">
+        Clean notes for game development progress, phase planning, and things that still need to be built.
+      </p>
+
+      <div class="actions">
+        <button class="button" type="button" data-jump="log">Current log</button>
+        <button class="button" type="button" data-jump="plan">Phase plan</button>
+        <button class="button" type="button" data-jump="rules">Log rules</button>
+      </div>
+    </section>
+
+    <section class="section reveal" id="log">
+      <div class="section-head">
+        <h2>Current Log</h2>
+        <span>Latest game dev notes</span>
+      </div>
+
+      <div class="stack">
+        <article class="card">
+          <div class="card-head">
+            <h3>2026-03-30 - Character selection UI cleaned up</h3>
+            <span>Status: active</span>
           </div>
-        </div>
+          <p>The selection flow now focuses on killer and survivor templates without extra dashboard clutter.</p>
+          <ul>
+            <li>Separate killer and survivor selections</li>
+            <li>Clearer validation path</li>
+            <li>Better readable state on screen</li>
+          </ul>
+        </article>
 
-        <div class="sidebar-section">
-          <div class="sidebar-label">Menu</div>
-          <div class="nav-list">
-            <button class="nav-item active" type="button" data-jump="hero">
-              <span class="nav-icon"></span>
-              <span>Dashboard</span>
-            </button>
-            <button class="nav-item" type="button" data-jump="log">
-              <span class="nav-icon"></span>
-              <span>Current Log</span>
-            </button>
-            <button class="nav-item" type="button" data-jump="phase">
-              <span class="nav-icon"></span>
-              <span>Phase Plan</span>
-            </button>
-            <button class="nav-item" type="button" data-jump="progress">
-              <span class="nav-icon"></span>
-              <span>Progress</span>
-            </button>
+        <article class="card">
+          <div class="card-head">
+            <h3>2026-03-30 - Morph folders split</h3>
+            <span>Status: active</span>
           </div>
-        </div>
+          <p>Morph templates are organized into dedicated folders so the game logic can find them faster and fail more cleanly.</p>
+          <ul>
+            <li>ServerStorage/MorphTemplates/Killers</li>
+            <li>ServerStorage/MorphTemplates/Survivors</li>
+            <li>Less confusion in the asset layout</li>
+          </ul>
+        </article>
 
-        <div class="sidebar-section">
-          <div class="sidebar-label">General</div>
-          <div class="nav-list">
-            <button class="nav-item" type="button" data-action="accent">
-              <span class="nav-icon"></span>
-              <span>Shuffle accent</span>
-            </button>
-            <button class="nav-item" type="button" data-action="motion">
-              <span class="nav-icon"></span>
-              <span>Pause motion</span>
-            </button>
+        <article class="card">
+          <div class="card-head">
+            <h3>2026-03-30 - Debug overlay added</h3>
+            <span>Status: done</span>
           </div>
-        </div>
+          <p>A temporary logger now catches warnings, errors, and other useful messages during testing.</p>
+          <ul>
+            <li>Local and server message capture</li>
+            <li>Clear button and recent entry limit</li>
+            <li>Helps track missing assets and script issues</li>
+          </ul>
+        </article>
+      </div>
+    </section>
 
-        <div class="sidebar-note flicker">
-          <h3>Single-file ready</h3>
-          <p>This page is still just static HTML, CSS, and JS, so it works cleanly on GitHub Pages.</p>
-          <button class="download-btn" type="button" data-jump="log">Open latest log</button>
-        </div>
-      </aside>
+    <section class="section reveal" id="plan">
+      <div class="section-head">
+        <h2>Phase Plan</h2>
+        <span>What comes next</span>
+      </div>
 
-      <section class="main">
-        <div class="topbar reveal">
-          <label class="search" aria-label="Search task">
-            <span class="search-icon" aria-hidden="true"></span>
-            <input type="search" placeholder="Search task" value="Search task">
-            <span class="search-shortcut">Ctrl F</span>
-          </label>
+      <div class="grid">
+        <article class="card muted">
+          <h3>Phase 4</h3>
+          <p>Finish the character selection flow and store chosen templates safely.</p>
+        </article>
 
-          <div class="toolbar-icons" aria-label="Notifications">
-            <button class="icon-btn" type="button" aria-label="Messages">✉</button>
-            <button class="icon-btn" type="button" aria-label="Alerts">◔</button>
-          </div>
+        <article class="card muted">
+          <h3>Phase 5</h3>
+          <p>Add simple match feedback for role, state, score, and timer.</p>
+        </article>
 
-          <div class="profile">
-            <div class="avatar" aria-hidden="true"></div>
-            <div class="profile-text">
-              <strong>Totok Michael</strong>
-              <span>tmichael20@mail.com</span>
-            </div>
-          </div>
-        </div>
+        <article class="card muted">
+          <h3>Phase 6</h3>
+          <p>Turn the systems into a playable map with the final content pass.</p>
+        </article>
 
-        <section class="hero reveal tilt" id="hero">
-          <div class="hero-top">
-            <div>
-              <p class="eyebrow">The Solenne Trials</p>
-              <h1>Development Log</h1>
-              <p class="subtitle">
-                A dashboard-style log for tracking phase work, selection UI, and the game systems that are currently in motion.
-              </p>
-            </div>
+        <article class="card muted">
+          <h3>Phase 7</h3>
+          <p>Balance the round, clean up edge cases, and prepare for testing.</p>
+        </article>
+      </div>
+    </section>
 
-            <div class="hero-actions">
-              <button class="button primary" type="button" data-action="accent">+ Add Project</button>
-              <button class="button" type="button" data-action="motion">Import Data</button>
-            </div>
-          </div>
+    <section class="section reveal" id="rules">
+      <div class="section-head">
+        <h2>Log Rules</h2>
+        <span>How to keep this useful</span>
+      </div>
 
-          <div class="pillrow">
-            <div class="pill">Current build: Phase 4 selection</div>
-            <div class="pill">Current logger: README.html</div>
-            <div class="pill">Score-based killer selection</div>
-            <div class="pill">Role-specific morph choices</div>
-            <div class="pill">Character selection UI</div>
-            <div class="pill">Draggable temp UIs</div>
-          </div>
-
-          <div class="chip-row">
-            <span class="chip">Light dashboard skin</span>
-            <span class="chip">Hover motion</span>
-            <span class="chip">Cursor glow</span>
-            <span class="chip">GitHub Pages ready</span>
-          </div>
-        </section>
-
-        <section class="metrics">
-          <article class="metric featured reveal tilt">
-            <div class="metric-header">
-              <h2 class="metric-title">Total Projects</h2>
-              <div class="metric-arrow">↗</div>
-            </div>
-            <p class="metric-value">24</p>
-            <div class="metric-sub"><span class="trend-chip" aria-hidden="true"></span> Increased from last month</div>
-          </article>
-
-          <article class="metric reveal tilt">
-            <div class="metric-header">
-              <h2 class="metric-title">Ended Projects</h2>
-              <div class="metric-arrow">↗</div>
-            </div>
-            <p class="metric-value">10</p>
-            <div class="metric-sub"><span class="trend-chip" aria-hidden="true"></span> Increased from last month</div>
-          </article>
-
-          <article class="metric reveal tilt">
-            <div class="metric-header">
-              <h2 class="metric-title">Running Projects</h2>
-              <div class="metric-arrow">↗</div>
-            </div>
-            <p class="metric-value">12</p>
-            <div class="metric-sub"><span class="trend-chip" aria-hidden="true"></span> Increased from last month</div>
-          </article>
-
-          <article class="metric reveal tilt">
-            <div class="metric-header">
-              <h2 class="metric-title">Pending Project</h2>
-              <div class="metric-arrow">↗</div>
-            </div>
-            <p class="metric-value">2</p>
-            <div class="metric-sub">On discuss</div>
-          </article>
-        </section>
-
-        <section class="content-grid">
-          <div class="stack">
-            <article class="panel reveal tilt">
-              <div class="panel-header">
-                <h2 class="panel-title">Project Analytics</h2>
-                <button class="panel-action" type="button" data-action="accent">Refresh</button>
-              </div>
-              <div class="chart" aria-label="Weekly project analytics">
-                <div class="bar-group">
-                  <div class="bar-track"><div class="bar dim" style="--height: 42%; --fill: 1;"></div></div>
-                  <div class="bar-label">S</div>
-                </div>
-                <div class="bar-group">
-                  <div class="bar-track"><div class="bar" style="--height: 68%; --fill: 1;"></div></div>
-                  <div class="bar-label">M</div>
-                </div>
-                <div class="bar-group">
-                  <div class="bar-track"><div class="bar alt" style="--height: 54%; --fill: 0.74;"></div></div>
-                  <div class="bar-label">T</div>
-                </div>
-                <div class="bar-group">
-                  <div class="bar-track"><div class="bar" style="--height: 74%; --fill: 1;"></div></div>
-                  <div class="bar-label">W</div>
-                </div>
-                <div class="bar-group">
-                  <div class="bar-track"><div class="bar dim" style="--height: 65%; --fill: 1;"></div></div>
-                  <div class="bar-label">T</div>
-                </div>
-                <div class="bar-group">
-                  <div class="bar-track"><div class="bar dim" style="--height: 52%; --fill: 1;"></div></div>
-                  <div class="bar-label">F</div>
-                </div>
-                <div class="bar-group">
-                  <div class="bar-track"><div class="bar dim" style="--height: 60%; --fill: 1;"></div></div>
-                  <div class="bar-label">S</div>
-                </div>
-              </div>
-            </article>
-
-            <article class="panel reveal tilt" id="log">
-              <div class="panel-header">
-                <h2 class="panel-title">Recent Log</h2>
-                <button class="panel-action" type="button" data-jump="phase">View roadmap</button>
-              </div>
-              <div class="log-list">
-                <article class="log-item">
-                  <div class="log-head">
-                    <h4>2026-03-30 - Split morph folders and window tools</h4>
-                    <span class="stamp">Status: active</span>
-                  </div>
-                  <p class="meta">Morph templates are now organized into separate killer and survivor folders, and both temporary windows can be moved or resized.</p>
-                  <ul>
-                    <li>ServerStorage/MorphTemplates/Killers</li>
-                    <li>ServerStorage/MorphTemplates/Survivors</li>
-                    <li>Shared drag and resize helper for temp UI</li>
-                  </ul>
-                </article>
-
-                <article class="log-item">
-                  <div class="log-head">
-                    <h4>2026-03-30 - Character selection UI updated</h4>
-                    <span class="stamp">Status: active</span>
-                  </div>
-                  <p class="meta">Players can now pick their killer and survivor templates from the available morph models before the match starts.</p>
-                  <ul>
-                    <li>Server validation through CharacterSelectionRequest</li>
-                    <li>Separate killer and survivor model selection</li>
-                    <li>Current score and selection state shown in the UI</li>
-                    <li>Temporary windows can now be dragged and resized</li>
-                  </ul>
-                </article>
-
-                <article class="log-item">
-                  <div class="log-head">
-                    <h4>2026-03-30 - Added HTML logger</h4>
-                    <span class="stamp">Status: active</span>
-                  </div>
-                  <p class="meta">README.html now acts as the visual development log instead of a plain text phase note.</p>
-                  <ul>
-                    <li>Clearer layout for updates</li>
-                    <li>Better scanability for changes and tasks</li>
-                    <li>Ready for frequent append-only style updates</li>
-                  </ul>
-                </article>
-
-                <article class="log-item">
-                  <div class="log-head">
-                    <h4>2026-03-30 - Debug overlay added</h4>
-                    <span class="stamp">Status: done</span>
-                  </div>
-                  <p class="meta">A temporary in-game logger now captures local and server messages, warnings, and errors.</p>
-                  <ul>
-                    <li>Server relay from LogService</li>
-                    <li>F8 toggle, clear button, and recent entry limit</li>
-                    <li>Helpful for missing asset and script errors</li>
-                  </ul>
-                </article>
-
-                <article class="log-item">
-                  <div class="log-head">
-                    <h4>2026-03-30 - Score-based killer selection</h4>
-                    <span class="stamp">Status: done</span>
-                  </div>
-                  <p class="meta">The player with the highest score now becomes the killer, with tie-breaking handled randomly.</p>
-                  <ul>
-                    <li>leaderstats Score support</li>
-                    <li>Score rewards for downs, carries, sacrifices, and wins</li>
-                    <li>Per-role morph selection still falls back safely</li>
-                  </ul>
-                </article>
-              </div>
-            </article>
-
-            <article class="panel reveal tilt">
-              <div class="panel-header">
-                <h2 class="panel-title">Team Collaboration</h2>
-                <button class="panel-action" type="button">+ Add Member</button>
-              </div>
-              <div class="team-list">
-                <div class="team-item">
-                  <div class="mini-avatar"></div>
-                  <div class="team-meta">
-                    <strong>Alexandra Deff</strong>
-                    <span>Working on Github Project Repository</span>
-                  </div>
-                  <span class="status-tag">Completed</span>
-                </div>
-
-                <div class="team-item">
-                  <div class="mini-avatar"></div>
-                  <div class="team-meta">
-                    <strong>Edwin Adenike</strong>
-                    <span>Working on Integrate User Authentication System</span>
-                  </div>
-                  <span class="status-tag">In Progress</span>
-                </div>
-
-                <div class="team-item">
-                  <div class="mini-avatar"></div>
-                  <div class="team-meta">
-                    <strong>Isaac Oluwatemilore</strong>
-                    <span>Working on Develop Search and Filter Functionality</span>
-                  </div>
-                  <span class="status-tag">Pending</span>
-                </div>
-
-                <div class="team-item">
-                  <div class="mini-avatar"></div>
-                  <div class="team-meta">
-                    <strong>David Oshodi</strong>
-                    <span>Working on Responsive Layout for Homepage</span>
-                  </div>
-                  <span class="status-tag">In Progress</span>
-                </div>
-              </div>
-            </article>
-          </div>
-
-          <div class="stack">
-            <article class="panel reminders-card reveal tilt">
-              <div class="panel-header">
-                <h2 class="panel-title">Reminders</h2>
-                <button class="panel-action" type="button">Start Meeting</button>
-              </div>
-              <div>
-                <h3 style="margin:0 0 8px; font-size: 22px; line-height: 1.1;">Meeting with Arc Company</h3>
-                <p class="meta">Time: 02.00 pm - 04.00 pm</p>
-              </div>
-              <div class="mini-line"></div>
-            </article>
-
-            <article class="panel reveal tilt" id="phase">
-              <div class="panel-header">
-                <h2 class="panel-title">Phase Plan</h2>
-                <button class="panel-action" type="button" data-action="motion">Pause motion</button>
-              </div>
-
-              <div class="phase-list">
-                <div class="phase-step">
-                  <div class="phase-badge">4</div>
-                  <div>
-                    <h4>Character Selection</h4>
-                    <p>Let players choose their killer and survivor models before the match starts.</p>
-                  </div>
-                </div>
-
-                <div class="phase-step">
-                  <div class="phase-badge">5</div>
-                  <div>
-                    <h4>Match Feedback</h4>
-                    <p>Make the round easier to read without opening Studio output.</p>
-                  </div>
-                </div>
-
-                <div class="phase-step">
-                  <div class="phase-badge">6</div>
-                  <div>
-                    <h4>Content Pass</h4>
-                    <p>Turn the systems into a playable map with art and sound.</p>
-                  </div>
-                </div>
-
-                <div class="phase-step">
-                  <div class="phase-badge">7</div>
-                  <div>
-                    <h4>Balance and Release Prep</h4>
-                    <p>Make the game stable enough for wider testing.</p>
-                  </div>
-                </div>
-              </div>
-            </article>
-
-            <article class="panel reveal tilt">
-              <div class="panel-header">
-                <h2 class="panel-title">Project Progress</h2>
-                <button class="panel-action" type="button">View details</button>
-              </div>
-
-              <div class="progress-card" id="progress">
-                <div>
-                  <p class="meta" style="margin-bottom: 8px;">The core systems are connected, and the selection flow is now the main focus.</p>
-                  <div class="legend">
-                    <span class="legend-item"><span class="legend-swatch"></span> Completed</span>
-                    <span class="legend-item"><span class="legend-swatch dim"></span> In Progress</span>
-                    <span class="legend-item"><span class="legend-swatch line"></span> Pending</span>
-                  </div>
-                </div>
-
-                <div class="gauge" aria-label="Project progress 41 percent">
-                  <div class="gauge-inner">
-                    <strong>41%</strong>
-                    <span>Project Ended</span>
-                  </div>
-                </div>
-              </div>
-            </article>
-
-            <article class="time-tracker reveal tilt">
-              <div class="panel-header" style="margin-bottom: 0;">
-                <h2 class="panel-title">Time Tracker</h2>
-                <button class="panel-action" type="button" style="background: rgba(255,255,255,0.12); color: white; border-color: rgba(255,255,255,0.14);">Live</button>
-              </div>
-              <div class="timer" id="timer">01:24:08</div>
-              <p class="meta" style="color: rgba(255,255,255,0.72);">Current focus: UI shaping, selection flow, and dev log cleanup.</p>
-              <div class="tracker-controls">
-                <button class="tracker-button" type="button" aria-label="Pause">❚❚</button>
-                <button class="tracker-button stop" type="button" aria-label="Stop">■</button>
-              </div>
-            </article>
-
-            <article class="panel reveal tilt">
-              <div class="panel-header">
-                <h2 class="panel-title">Log Rules</h2>
-                <button class="panel-action" type="button" data-jump="hero">Top</button>
-              </div>
-              <p class="footer-note">
-                Keep this file updated whenever a script changes, a phase completes, or a missing asset is found. Add short dated entries at the top of the log so the newest work stays visible first.
-              </p>
-            </article>
-          </div>
-
-          <div class="stack">
-            <article class="panel reveal tilt">
-              <div class="panel-header">
-                <h2 class="panel-title">Project</h2>
-                <button class="panel-action" type="button">+ New</button>
-              </div>
-
-              <div class="project-list">
-                <div class="project-item">
-                  <div class="project-dot"></div>
-                  <div>
-                    <h4>Develop API Endpoints</h4>
-                    <span class="tiny-date">Due date: Nov 26, 2024</span>
-                  </div>
-                </div>
-
-                <div class="project-item">
-                  <div class="project-dot"></div>
-                  <div>
-                    <h4>Onboarding Flow</h4>
-                    <span class="tiny-date">Due date: Nov 28, 2024</span>
-                  </div>
-                </div>
-
-                <div class="project-item">
-                  <div class="project-dot"></div>
-                  <div>
-                    <h4>Build Dashboard</h4>
-                    <span class="tiny-date">Due date: Nov 30, 2024</span>
-                  </div>
-                </div>
-
-                <div class="project-item">
-                  <div class="project-dot"></div>
-                  <div>
-                    <h4>Optimize Page Load</h4>
-                    <span class="tiny-date">Due date: Dec 5, 2024</span>
-                  </div>
-                </div>
-
-                <div class="project-item">
-                  <div class="project-dot"></div>
-                  <div>
-                    <h4>Cross-Browser Testing</h4>
-                    <span class="tiny-date">Due date: Dec 9, 2024</span>
-                  </div>
-                </div>
-              </div>
-            </article>
-
-            <article class="action-card panel reveal tilt">
-              <div class="panel-header">
-                <h2 class="panel-title">Quick Actions</h2>
-                <button class="panel-action" type="button" data-action="accent">Recolor</button>
-              </div>
-              <p class="meta">Use the buttons around the page to jump, shuffle the palette, and pause the background motion.</p>
-            </article>
-
-            <article class="panel reveal tilt">
-              <div class="panel-header">
-                <h2 class="panel-title">Open Notes</h2>
-                <button class="panel-action" type="button" data-jump="log">Jump to log</button>
-              </div>
-              <p class="footer-note">Open this file directly in a browser. It is still a single HTML page, so it is ready for GitHub Pages without extra setup.</p>
-            </article>
-          </div>
-        </section>
-      </section>
-    </div>
+      <div class="card">
+        <ul>
+          <li>Keep entries short and dated.</li>
+          <li>Only add things that matter to the game dev process.</li>
+          <li>Use this page as the simple public log for the project.</li>
+        </ul>
+      </div>
+    </section>
   </main>
 </body>
 </html>
