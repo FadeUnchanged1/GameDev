@@ -3,116 +3,255 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>The Solenne Trials Dev Log</title>
+  <title>Stage Bound Implementation Seed</title>
   <link rel="stylesheet" href="styles.css">
   <script defer src="script.js"></script>
 </head>
 <body>
-  <main class="page">
-    <section class="hero reveal" id="top">
-      <p class="eyebrow">The Solenne Trials</p>
-      <h1>Development Log</h1>
-      <p class="subtitle">
-        Clean notes for game development progress, phase planning, and things that still need to be built.
-      </p>
-
-      <div class="actions">
-        <button class="button" type="button" data-jump="log">Current log</button>
-        <button class="button" type="button" data-jump="plan">Phase plan</button>
-        <button class="button" type="button" data-jump="rules">Log rules</button>
-      </div>
-    </section>
-
-    <section class="section reveal" id="log">
-      <div class="section-head">
-        <h2>Current Log</h2>
-        <span>Latest game dev notes</span>
+  <main class="layout">
+    <aside class="rail reveal">
+      <div class="brand">
+        <p class="brand-kicker">Stage Bound</p>
+        <h1>Implementation Seed</h1>
+        <p class="brand-copy">
+          Studio-first Luau scaffold for the current vertical slice. This log stays focused on gameplay systems,
+          Studio setup, and the next build targets.
+        </p>
       </div>
 
-      <div class="stack">
-        <article class="card">
-          <div class="card-head">
-            <h3>2026-03-30 - Character selection UI cleaned up</h3>
-            <span>Status: active</span>
+      <div class="rail-card">
+        <span class="rail-label">Current slice</span>
+        <strong>Match Loop</strong>
+        <p>Vestige intent, relic flow, seam flow, and role authority are the active test path.</p>
+      </div>
+
+      <nav class="toc" aria-label="Section navigation">
+        <button class="toc-link active" type="button" data-jump="implementation">Current Implementation</button>
+        <button class="toc-link" type="button" data-jump="playtest">Playtest Keys</button>
+        <button class="toc-link" type="button" data-jump="setup">Studio Setup</button>
+        <button class="toc-link" type="button" data-jump="targets">Next Build Targets</button>
+      </nav>
+
+      <div class="rail-note">
+        <p>
+          Keep entries short, dated, and tied to the actual build. The goal is a readable project log, not a dashboard.
+        </p>
+      </div>
+    </aside>
+
+    <section class="content">
+      <header class="hero reveal" id="top">
+        <div class="hero-top">
+          <div>
+            <p class="eyebrow">Stage Bound / Implementation Seed</p>
+            <h2>Development Log</h2>
+            <p class="subtitle">
+              Clean monochrome notes for the current vertical slice. The page keeps only the systems, keybinds,
+              setup rules, and next targets that matter for development.
+            </p>
           </div>
-          <p>The selection flow now focuses on killer and survivor templates without extra dashboard clutter.</p>
+
+          <div class="hero-actions">
+            <button class="ghost-button" type="button" data-jump="implementation">Implementation</button>
+            <button class="ghost-button" type="button" data-jump="playtest">Playtest keys</button>
+            <button class="ghost-button" type="button" data-jump="setup">Setup</button>
+          </div>
+        </div>
+
+        <div class="fact-row">
+          <div class="fact">
+            <span>Loop</span>
+            <strong>Match Loop &rarr; Relics &rarr; Seams &rarr; Verdict</strong>
+          </div>
+          <div class="fact">
+            <span>Authority</span>
+            <strong>Server-side role gates</strong>
+          </div>
+          <div class="fact">
+            <span>Input</span>
+            <strong>Nearest tagged interactable</strong>
+          </div>
+          <div class="fact">
+            <span>Selection</span>
+            <strong>The Registry character choice</strong>
+          </div>
+        </div>
+      </header>
+
+      <section class="section reveal" id="implementation">
+        <div class="section-head">
+          <h3>Current Implementation</h3>
+          <span>What is already in the scaffold</span>
+        </div>
+
+        <div class="card-grid">
+          <article class="card">
+            <h4>Shared contracts</h4>
+            <p>Shared lore contracts and match protocol constants are already defined.</p>
+          </article>
+
+          <article class="card">
+            <h4>Character Codex</h4>
+            <p>Data-driven roster handling is in place for Wardens and Tethered.</p>
+          </article>
+
+          <article class="card">
+            <h4>Server bootstrap</h4>
+            <p>Network, Match, and Residue services are part of the server startup flow.</p>
+          </article>
+
+          <article class="card">
+            <h4>Client bootstrap</h4>
+            <p>The client listens for match state and Residue events without extra UI clutter.</p>
+          </article>
+        </div>
+
+        <article class="card wide-card">
+          <h4>Runtime flow</h4>
           <ul>
-            <li>Separate killer and survivor selections</li>
-            <li>Clearer validation path</li>
-            <li>Better readable state on screen</li>
+            <li>Vestige intent pipeline includes server validation, cooldown checks, and rate limiting.</li>
+            <li>Relic objective flow grants Residue and opens Seams after threshold completion.</li>
+            <li>Seam flow supports Breach attempts and Corrupt attempts, then transitions into The Verdict.</li>
+            <li>Role assignment and authority gates are enforced server-side for Tethered and Wardens.</li>
           </ul>
         </article>
+      </section>
 
-        <article class="card">
-          <div class="card-head">
-            <h3>2026-03-30 - Morph folders split</h3>
-            <span>Status: active</span>
-          </div>
-          <p>Morph templates are organized into dedicated folders so the game logic can find them faster and fail more cleanly.</p>
+      <section class="section reveal" id="playtest">
+        <div class="section-head">
+          <h3>Playtest Keys</h3>
+          <span>Vertical slice controls</span>
+        </div>
+
+        <div class="split-grid">
+          <article class="card">
+            <h4>Key map</h4>
+            <div class="key-list">
+              <div class="key-row">
+                <kbd>Q</kbd>
+                <p>Send Vestige intent.</p>
+              </div>
+              <div class="key-row">
+                <kbd>E</kbd>
+                <p>Commune with the next test Relic: RelicI, RelicII, then RelicIII.</p>
+              </div>
+              <div class="key-row">
+                <kbd>R</kbd>
+                <p>Attempt Breach at SeamAlpha. Tethered only.</p>
+              </div>
+              <div class="key-row">
+                <kbd>T</kbd>
+                <p>Attempt Seam corruption. Wardens only.</p>
+              </div>
+              <div class="key-row">
+                <kbd>Z</kbd>
+                <p>Cycle character selection in The Registry for your assigned role.</p>
+              </div>
+              <div class="key-row">
+                <kbd>X</kbd>
+                <p>Studio-only solo role toggle between Tethered and Wardens.</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="card">
+            <h4>Test loop</h4>
+            <ol>
+              <li>Wait until Match Loop state appears in output.</li>
+              <li>Press E three times to complete Relics.</li>
+              <li>Confirm Seams opened output.</li>
+              <li>Press R to Breach and force The Verdict state.</li>
+            </ol>
+
+            <h4>Role behavior</h4>
+            <ul>
+              <li>With one player in server, role is Tethered for objective flow tests.</li>
+              <li>With two or more players, one player is assigned Warden and others are Tethered.</li>
+              <li>Vestige test input uses the current The Registry character selection.</li>
+              <li>Use X in Studio with one player to simulate role swaps without launching a second client.</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="section reveal" id="setup">
+        <div class="section-head">
+          <h3>Studio Setup</h3>
+          <span>Morphs, interactables, and folder placement</span>
+        </div>
+
+        <div class="split-grid">
+          <article class="card">
+            <h4>Morph setup</h4>
+            <ul>
+              <li>ServerStorage/CrossBoundMorphs/Tethered</li>
+              <li>ServerStorage/CrossBoundMorphs/Wardens</li>
+              <li>Optional fallback: Default under each role folder</li>
+              <li>Models need a Humanoid and HumanoidRootPart</li>
+              <li>Spawn animation can use an attribute or an Animation child</li>
+            </ul>
+            <p>
+              Morph runtime auto-ensures a Humanoid Animator and tries to clone Animate from the previous character.
+              Default strategy is AppearanceOnly unless MorphStrategy is set to RigSwap.
+            </p>
+          </article>
+
+          <article class="card">
+            <h4>Interactables</h4>
+            <ul>
+              <li>Relics use the Relic tag with optional RelicId, InteractRange, and IsInteractable.</li>
+              <li>Seams use the Seam tag with optional SeamId, InteractRange, and IsInteractable.</li>
+              <li>Client controls now use the nearest tagged interactable instead of hardcoded ids.</li>
+            </ul>
+          </article>
+        </div>
+
+        <article class="card wide-card">
+          <h4>Studio placement</h4>
           <ul>
-            <li>ServerStorage/MorphTemplates/Killers</li>
-            <li>ServerStorage/MorphTemplates/Survivors</li>
-            <li>Less confusion in the asset layout</li>
+            <li>ReplicatedStorage/CrossBound</li>
+            <li>ServerScriptService/CrossBoundServer</li>
+            <li>StarterPlayer/StarterPlayerScripts/CrossBoundClient</li>
           </ul>
+          <p>
+            Mirror the folder structure in Studio before testing so the server and client bootstrap scripts can find
+            the shared modules and runtime hooks.
+          </p>
         </article>
+      </section>
 
-        <article class="card">
-          <div class="card-head">
-            <h3>2026-03-30 - Debug overlay added</h3>
-            <span>Status: done</span>
-          </div>
-          <p>A temporary logger now catches warnings, errors, and other useful messages during testing.</p>
-          <ul>
-            <li>Local and server message capture</li>
-            <li>Clear button and recent entry limit</li>
-            <li>Helps track missing assets and script issues</li>
-          </ul>
-        </article>
-      </div>
-    </section>
+      <section class="section reveal" id="targets">
+        <div class="section-head">
+          <h3>Next Build Targets</h3>
+          <span>Work that still needs to land</span>
+        </div>
 
-    <section class="section reveal" id="plan">
-      <div class="section-head">
-        <h2>Phase Plan</h2>
-        <span>What comes next</span>
-      </div>
+        <div class="card-grid targets-grid">
+          <article class="card muted-card">
+            <h4>Imprint hooks</h4>
+            <p>Add passive runtime hooks for Imprint behavior.</p>
+          </article>
 
-      <div class="grid">
-        <article class="card muted">
-          <h3>Phase 4</h3>
-          <p>Finish the character selection flow and store chosen templates safely.</p>
-        </article>
+          <article class="card muted-card">
+            <h4>Mandate scheduler</h4>
+            <p>Drive environmental interventions through the Mandate system.</p>
+          </article>
 
-        <article class="card muted">
-          <h3>Phase 5</h3>
-          <p>Add simple match feedback for role, state, score, and timer.</p>
-        </article>
+          <article class="card muted-card">
+            <h4>Authority gates</h4>
+            <p>Keep Warden-only corruption and Tethered-only breaching enforced.</p>
+          </article>
 
-        <article class="card muted">
-          <h3>Phase 6</h3>
-          <p>Turn the systems into a playable map with the final content pass.</p>
-        </article>
+          <article class="card muted-card">
+            <h4>Registry assignment</h4>
+            <p>Replace test constants with Registry-driven character assignment.</p>
+          </article>
+        </div>
+      </section>
 
-        <article class="card muted">
-          <h3>Phase 7</h3>
-          <p>Balance the round, clean up edge cases, and prepare for testing.</p>
-        </article>
-      </div>
-    </section>
-
-    <section class="section reveal" id="rules">
-      <div class="section-head">
-        <h2>Log Rules</h2>
-        <span>How to keep this useful</span>
-      </div>
-
-      <div class="card">
-        <ul>
-          <li>Keep entries short and dated.</li>
-          <li>Only add things that matter to the game dev process.</li>
-          <li>Use this page as the simple public log for the project.</li>
-        </ul>
-      </div>
+      <footer class="footer reveal">
+        This page stays intentionally simple: monochrome, functional, and centered on the Stage Bound implementation seed.
+      </footer>
     </section>
   </main>
 </body>
