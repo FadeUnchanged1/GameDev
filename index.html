@@ -25,58 +25,133 @@
         <p>Vestige intent, relic flow, seam flow, and role authority are the active test path.</p>
       </div>
 
+      <div class="rail-card">
+        <span class="rail-label">Phase flow</span>
+        <div class="flow-list" aria-label="Current match flow">
+          <span>Lobby</span>
+          <span>TimerEnd</span>
+          <span>StageLoading</span>
+          <span>Curtain</span>
+          <span class="flow-current">MatchLoop</span>
+        </div>
+      </div>
+
+      <div class="rail-card">
+        <span class="rail-label">Quick actions</span>
+        <div class="rail-actions">
+          <button class="chip-button" type="button" data-jump="implementation">Implementation</button>
+          <button class="chip-button" type="button" data-jump="setup">Setup</button>
+          <button class="chip-button" type="button" data-action="motion">Pause motion</button>
+        </div>
+      </div>
+
       <nav class="toc" aria-label="Section navigation">
-        <button class="toc-link active" type="button" data-jump="implementation">Current Implementation</button>
-        <button class="toc-link" type="button" data-jump="playtest">Playtest Keys</button>
-        <button class="toc-link" type="button" data-jump="setup">Studio Setup</button>
-        <button class="toc-link" type="button" data-jump="targets">Next Build Targets</button>
+        <button class="toc-link active" type="button" data-jump="top">Top</button>
+        <button class="toc-link" type="button" data-jump="snapshot">Snapshot</button>
+        <button class="toc-link" type="button" data-jump="implementation">Implementation</button>
+        <button class="toc-link" type="button" data-jump="playtest">Playtest keys</button>
+        <button class="toc-link" type="button" data-jump="setup">Studio setup</button>
+        <button class="toc-link" type="button" data-jump="targets">Next targets</button>
       </nav>
 
       <div class="rail-note">
         <p>
-          Keep entries short, dated, and tied to the actual build. The goal is a readable project log, not a dashboard.
+          Keep entries short, dated, and tied to the actual build. The goal is a readable project log, not a wide dashboard.
         </p>
       </div>
     </aside>
 
     <section class="content">
-      <header class="hero reveal" id="top">
+      <header class="hero reveal tilt" id="top">
         <div class="hero-top">
           <div>
-            <p class="eyebrow">Stage Bound / Implementation Seed</p>
+            <p class="eyebrow">Progress Snapshot / April 2026</p>
             <h2>Development Log</h2>
             <p class="subtitle">
-              Clean monochrome notes for the current vertical slice. The page keeps only the systems, keybinds,
-              setup rules, and next targets that matter for development.
+              Simple monochrome notes for the current implementation seed. The page keeps only the stage flow,
+              playtest keys, setup rules, and next targets that matter for development.
             </p>
           </div>
 
           <div class="hero-actions">
-            <button class="ghost-button" type="button" data-jump="implementation">Implementation</button>
+            <button class="ghost-button" type="button" data-jump="snapshot">Snapshot</button>
             <button class="ghost-button" type="button" data-jump="playtest">Playtest keys</button>
             <button class="ghost-button" type="button" data-jump="setup">Setup</button>
           </div>
         </div>
 
-        <div class="fact-row">
-          <div class="fact">
-            <span>Loop</span>
-            <strong>Match Loop &rarr; Relics &rarr; Seams &rarr; Verdict</strong>
-          </div>
-          <div class="fact">
-            <span>Authority</span>
-            <strong>Server-side role gates</strong>
-          </div>
-          <div class="fact">
-            <span>Input</span>
-            <strong>Nearest tagged interactable</strong>
-          </div>
-          <div class="fact">
-            <span>Selection</span>
-            <strong>The Registry character choice</strong>
-          </div>
+        <div class="flow-strip" aria-label="Match phase flow">
+          <span>Lobby</span>
+          <span>TimerEnd</span>
+          <span>StageLoading</span>
+          <span>Curtain</span>
+          <span class="current">MatchLoop</span>
+        </div>
+
+        <div class="stat-row">
+          <article class="stat">
+            <span>Match flow</span>
+            <strong>Live and server-owned</strong>
+          </article>
+          <article class="stat">
+            <span>Registry</span>
+            <strong>Deterministic selection</strong>
+          </article>
+          <article class="stat">
+            <span>Residue</span>
+            <strong>Map-driven relic flow</strong>
+          </article>
+          <article class="stat">
+            <span>HUD</span>
+            <strong>Timer, board, abilities</strong>
+          </article>
         </div>
       </header>
+
+      <section class="section reveal" id="snapshot">
+        <div class="section-head">
+          <h3>Progress Snapshot</h3>
+          <span>Current vertical slice</span>
+        </div>
+
+        <div class="card-grid">
+          <article class="card">
+            <h4>Match orchestration</h4>
+            <ul>
+              <li>Lobby -> TimerEnd -> StageLoading -> Curtain -> MatchLoop is active.</li>
+              <li>Random map loading pulls from ServerStorage/Maps into Workspace/CrossBoundActiveMap.</li>
+              <li>Role-based map spawn routing uses Killer and Survivor tags with SpawnLocation fallback.</li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <h4>Registry and relics</h4>
+            <ul>
+              <li>Registry selection is live and deterministic.</li>
+              <li>Tethered defaults to Will for solo iteration.</li>
+              <li>Relic progression is map-driven, server-authoritative, and supports multi-fix stabilization.</li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <h4>Seams and mutation</h4>
+            <ul>
+              <li>Relic mini-game supports pause, resume, chained rounds, and range-based interruption handling.</li>
+              <li>Seam readiness and mutation are live with debris and riser activation.</li>
+              <li>Clients receive smooth decaying screenshake on mutation.</li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <h4>Morphs and HUD</h4>
+            <ul>
+              <li>Morph pipeline supports idle, walk, run, injured, and burger-eat animation attributes plus runtime overrides.</li>
+              <li>Will survivor kit is active with Q speed boost and E burger heal.</li>
+              <li>HUD shows the round timer, map name, residue board, and placeholder Q/E ability UI.</li>
+            </ul>
+          </article>
+        </div>
+      </section>
 
       <section class="section reveal" id="implementation">
         <div class="section-head">
@@ -84,35 +159,33 @@
           <span>What is already in the scaffold</span>
         </div>
 
-        <div class="card-grid">
+        <div class="split-grid">
           <article class="card">
-            <h4>Shared contracts</h4>
-            <p>Shared lore contracts and match protocol constants are already defined.</p>
+            <h4>Shared and server</h4>
+            <ul>
+              <li>Shared lore contracts and match protocol constants.</li>
+              <li>Data-driven Character Codex for Wardens and Tethered.</li>
+              <li>Server bootstrap with Network, Match, Map, Role, Registry, Morph, SurvivorAbility, Residue, Vestige, Relic, and Seam services.</li>
+            </ul>
           </article>
 
           <article class="card">
-            <h4>Character Codex</h4>
-            <p>Data-driven roster handling is in place for Wardens and Tethered.</p>
-          </article>
-
-          <article class="card">
-            <h4>Server bootstrap</h4>
-            <p>Network, Match, and Residue services are part of the server startup flow.</p>
-          </article>
-
-          <article class="card">
-            <h4>Client bootstrap</h4>
-            <p>The client listens for match state and Residue events without extra UI clutter.</p>
+            <h4>Client and controls</h4>
+            <ul>
+              <li>Client bootstrap with match state, role, registry, survivor ability, vestige, relic, seam, camera, and HUD controllers.</li>
+              <li>Vestige intent pipeline uses server validation, cooldown checks, and rate limiting.</li>
+              <li>Survivor abilities are data-driven from character modules, with server-authoritative cooldown and effect handling.</li>
+            </ul>
           </article>
         </div>
 
         <article class="card wide-card">
-          <h4>Runtime flow</h4>
+          <h4>Runtime rules</h4>
           <ul>
-            <li>Vestige intent pipeline includes server validation, cooldown checks, and rate limiting.</li>
             <li>Relic objective flow grants Residue and opens Seams after threshold completion.</li>
-            <li>Seam flow supports Breach attempts and Corrupt attempts, then transitions into The Verdict.</li>
+            <li>Seam flow supports Breach attempts, Corrupt attempts, readiness visuals, and map mutation transitions.</li>
             <li>Role assignment and authority gates are enforced server-side for Tethered and Wardens.</li>
+            <li>Sprint is server-authoritative with SprintStart and SprintStop intents, plus local fallback behavior.</li>
           </ul>
         </article>
       </section>
@@ -120,7 +193,7 @@
       <section class="section reveal" id="playtest">
         <div class="section-head">
           <h3>Playtest Keys</h3>
-          <span>Vertical slice controls</span>
+          <span>Current vertical slice controls</span>
         </div>
 
         <div class="split-grid">
@@ -129,11 +202,11 @@
             <div class="key-list">
               <div class="key-row">
                 <kbd>Q</kbd>
-                <p>Send Vestige intent.</p>
+                <p>Trigger character action. Uses SurvivorAbilityIntent if Q is configured, otherwise sends the first Vestige intent.</p>
               </div>
               <div class="key-row">
                 <kbd>E</kbd>
-                <p>Commune with the next test Relic: RelicI, RelicII, then RelicIII.</p>
+                <p>Trigger character action. Uses SurvivorAbilityIntent if E is configured, otherwise communes with the nearest relic.</p>
               </div>
               <div class="key-row">
                 <kbd>R</kbd>
@@ -144,31 +217,37 @@
                 <p>Attempt Seam corruption. Wardens only.</p>
               </div>
               <div class="key-row">
+                <kbd>Shift</kbd>
+                <p>Sprint with server-authoritative start and stop intents.</p>
+              </div>
+              <div class="key-row">
+                <kbd>Ctrl</kbd>
+                <p>LeftCtrl or RightCtrl toggles shiftlock locally.</p>
+              </div>
+              <div class="key-row">
                 <kbd>Z</kbd>
                 <p>Cycle character selection in The Registry for your assigned role.</p>
               </div>
               <div class="key-row">
-                <kbd>X</kbd>
+                <kbd>Shift+X</kbd>
                 <p>Studio-only solo role toggle between Tethered and Wardens.</p>
               </div>
             </div>
           </article>
 
           <article class="card">
-            <h4>Test loop</h4>
+            <h4>Test loop and role behavior</h4>
             <ol>
               <li>Wait until Match Loop state appears in output.</li>
-              <li>Press E three times to complete Relics.</li>
-              <li>Confirm Seams opened output.</li>
+              <li>Stabilize relic fixes through the mini-game until the relic threshold is met.</li>
+              <li>Confirm Seam readiness output and visual transitions.</li>
               <li>Press R to Breach and force The Verdict state.</li>
             </ol>
-
-            <h4>Role behavior</h4>
             <ul>
-              <li>With one player in server, role is Tethered for objective flow tests.</li>
-              <li>With two or more players, one player is assigned Warden and others are Tethered.</li>
-              <li>Vestige test input uses the current The Registry character selection.</li>
-              <li>Use X in Studio with one player to simulate role swaps without launching a second client.</li>
+              <li>With one player in server, the role is Tethered for objective flow tests.</li>
+              <li>With two or more players, one player is assigned Warden and the others are Tethered.</li>
+              <li>Vestige test input uses the current The Registry selection.</li>
+              <li>In Studio with one player, Shift+X lets you test both sides without opening a second client.</li>
             </ul>
           </article>
         </div>
@@ -186,22 +265,25 @@
             <ul>
               <li>ServerStorage/CrossBoundMorphs/Tethered</li>
               <li>ServerStorage/CrossBoundMorphs/Wardens</li>
-              <li>Optional fallback: Default under each role folder</li>
+              <li>Optional fallback: Default inside each role folder</li>
               <li>Models need a Humanoid and HumanoidRootPart</li>
-              <li>Spawn animation can use an attribute or an Animation child</li>
+              <li>Spawn animation can come from an attribute or an Animation child</li>
             </ul>
             <p>
-              Morph runtime auto-ensures a Humanoid Animator and tries to clone Animate from the previous character.
-              Default strategy is AppearanceOnly unless MorphStrategy is set to RigSwap.
+              At Match Loop start, players morph into their selected Registry character. Changing selection with Z
+              remorphs the active model. Default strategy is AppearanceOnly unless MorphStrategy is set to RigSwap.
             </p>
           </article>
 
           <article class="card">
-            <h4>Interactables</h4>
+            <h4>Interactable setup</h4>
             <ul>
-              <li>Relics use the Relic tag with optional RelicId, InteractRange, and IsInteractable.</li>
-              <li>Seams use the Seam tag with optional SeamId, InteractRange, and IsInteractable.</li>
-              <li>Client controls now use the nearest tagged interactable instead of hardcoded ids.</li>
+              <li>Relics use the Relic tag with optional RelicId, InteractRange, IsInteractable, PromptText, InputKey, RequiredFixes, and RelicLabel.</li>
+              <li>Every tagged Relic gets a clean white progress billboard that shows its own fix count.</li>
+              <li>Seams use the Seam tag with optional SeamId, InteractRange, IsInteractable, role-specific prompt and key attributes, and escape destination overrides.</li>
+              <li>Every tagged Seam gets a clean white progress billboard that shows total relics fixed.</li>
+              <li>StageMutationDebris and StageMutationRiser tags activate map mutation debris and risers after relic threshold completion.</li>
+              <li>Client controls use the nearest tagged interactable, and the interaction hint follows the mouse with a minimal white billboard style.</li>
             </ul>
           </article>
         </div>
@@ -214,7 +296,7 @@
             <li>StarterPlayer/StarterPlayerScripts/CrossBoundClient</li>
           </ul>
           <p>
-            Mirror the folder structure in Studio before testing so the server and client bootstrap scripts can find
+            Mirror these folders into Roblox Studio before testing so the server and client bootstrap scripts can find
             the shared modules and runtime hooks.
           </p>
         </article>
@@ -238,13 +320,13 @@
           </article>
 
           <article class="card muted-card">
-            <h4>Authority gates</h4>
-            <p>Keep Warden-only corruption and Tethered-only breaching enforced.</p>
+            <h4>Deeper abilities</h4>
+            <p>Expand SurvivorAbility types beyond SpeedBoost and Heal.</p>
           </article>
 
           <article class="card muted-card">
-            <h4>Registry assignment</h4>
-            <p>Replace test constants with Registry-driven character assignment.</p>
+            <h4>Final HUD pass</h4>
+            <p>Replace the placeholder survivor ability HUD with final art and cooldown widgets.</p>
           </article>
         </div>
       </section>
